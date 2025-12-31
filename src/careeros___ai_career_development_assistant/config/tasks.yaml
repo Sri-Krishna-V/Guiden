@@ -1,0 +1,42 @@
+---
+profile_analysis_task:
+  description: Analyze the provided resume or user responses in {resume_or_text} to
+    create a comprehensive professional profile. Extract and categorize technical
+    skills, soft skills, experience levels, notable projects, achievements, and identify
+    potential areas for improvement. Focus on understanding the candidate's current
+    career level, expertise domains, and growth trajectory.
+  expected_output: 'A detailed professional profile analysis including: current skill
+    inventory (technical and soft skills), experience summary with key achievements,
+    project highlights, identified strengths and growth areas, and overall career
+    level assessment. Format as a structured analysis with clear categorization.'
+  agent: senior_career_profiler
+market_research_task:
+  description: Research and analyze the target job posting and company culture using
+    the provided job URL {job_url}. Scrape the job description and company information
+    to extract explicit requirements (hard skills, experience, qualifications) and
+    implicit requirements (cultural fit, soft skills, work environment expectations).
+    Also research the company's values, mission, and team culture.
+  expected_output: 'A comprehensive market analysis including: detailed job requirements
+    breakdown (technical skills, experience levels, qualifications), company culture
+    assessment, soft skills and behavioral expectations, hidden requirements and cultural
+    fit indicators, and insights into the team dynamics and work environment. Present
+    as a structured analysis with explicit and implicit requirements clearly separated.'
+  agent: tech_recruitment_researcher
+strategy_generation_task:
+  description: 'Synthesize the candidate profile analysis and market research to generate
+    a comprehensive career strategy. Create a structured JSON output that includes:
+    match score calculation (0-100), detailed gap analysis with missing skills identification,
+    actionable learning roadmap with specific resources and timelines, and interview
+    preparation context with technical questions and behavioral scenarios tailored
+    for the target role.'
+  expected_output: 'A structured JSON response containing: {"match_score": number
+    (0-100), "missing_skills": [list of specific skills gaps], "roadmap_steps": [detailed
+    learning plan with resources and timelines], "interview_prep_context": {"technical_questions":
+    [role-specific technical questions], "behavioral_scenarios": [STAR method scenarios
+    tailored to company culture], "key_talking_points": [strategic points to highlight
+    from candidate background]}}. Ensure all recommendations are specific, actionable,
+    and directly tied to closing the identified gaps.'
+  agent: lead_career_architect
+  context:
+  - profile_analysis_task
+  - market_research_task

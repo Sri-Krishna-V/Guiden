@@ -1,0 +1,25 @@
+[project]
+name = "careeros___ai_career_development_assistant"
+version = "0.1.0"
+description = "careeros___ai_career_development_assistant using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[litellm,tools]==1.4.1",
+    "firecrawl-py",
+]
+
+[project.scripts]
+careeros___ai_career_development_assistant = "careeros___ai_career_development_assistant.main:run"
+run_crew = "careeros___ai_career_development_assistant.main:run"
+train = "careeros___ai_career_development_assistant.main:train"
+replay = "careeros___ai_career_development_assistant.main:replay"
+test = "careeros___ai_career_development_assistant.main:test"
+run_with_trigger = "careeros___ai_career_development_assistant.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
