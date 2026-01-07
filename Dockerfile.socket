@@ -1,0 +1,24 @@
+# Socket Server Dockerfile
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Install dependencies (need dev deps for TS execution)
+COPY package*.json ./
+RUN npm ci
+
+# Install tsx globally
+RUN npm install -g tsx
+
+# Copy source
+COPY . .
+
+# Expose socket port
+EXPOSE 3001
+
+# Run socket server using tsx
+CMD ["tsx", "src/lib/socket-server.ts"]
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3001/health || exit 1
